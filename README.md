@@ -1,15 +1,15 @@
-Canvas Pong
-===========
+# Pong Game
 
-This is a small experiment to implement a version of the classic Pong game in an HTML <canvas>.
+Sebuah modifikasi penerapan AI dalam game Pong! menggunakan javascript.
 
- * You can find the [game here](http://codeincomplete.com/posts/2011/5/14/javascript_pong/demo.html)
- * You can find out [how it works](http://codeincomplete.com/posts/2011/5/14/javascript_pong/index.html)
+Anggota kelompok:
 
-You can also play this game in the [Chrome Web Store](https://chrome.google.com/webstore/detail/omimkinlomnncbmnceacpkmlbfaapojj?hl=en-US)
+- Krisma Anuarin Hidayat (200535626877)
+- Reo Wicaksono (200535626819)
+- Titto Mahogany Attaraqie (200535626830)
 
+* Original game source [how it works](http://codeincomplete.com/posts/2011/5/14/javascript_pong/index.html)
 
-NOTES
-=====
+# NOTES
 
- * No support for mobile devices (need to handle touch events instead of key input)
+- No support for mobile devices
