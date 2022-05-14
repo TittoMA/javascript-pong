@@ -150,12 +150,15 @@ Pong = {
     switch (keyCode) {
       case Game.KEY.ZERO:
         this.startDemo();
+        this.hideStartButton();
         break;
       case Game.KEY.ONE:
         this.startSinglePlayer();
+        this.hideStartButton();
         break;
       case Game.KEY.TWO:
         this.startDoublePlayer();
+        this.hideStartButton();
         break;
       case Game.KEY.ESC:
         this.stop(true);
@@ -244,7 +247,6 @@ Pong = {
   },
   stopBtn: function () {
     this.stop(true);
-    this.showStartButton();
   },
 
   inputPaddleSpeed: function (paddleSide) {
@@ -273,6 +275,22 @@ Pong = {
       this.rightPaddle.speed =
         (this.rightPaddle.maxY - this.rightPaddle.minY) / pdSpeed;
     }
+  },
+
+  inputBallSpeed: function () {
+    let inputBallSpeed = document.getElementById("inputBallSpeed").value;
+    let txtBallSpeed = document.getElementById("txtBallSpeed");
+
+    txtBallSpeed.innerText = inputBallSpeed;
+    this.changeBallSpeed(inputBallSpeed);
+  },
+
+  changeBallSpeed: function (speed) {
+    let ballSpeed = 4 / speed;
+
+    this.ball.speed = (this.ball.maxX - this.ball.minX) / ballSpeed;
+
+    // console.log(this.ball.speed);
   },
 
   //=============================================================================

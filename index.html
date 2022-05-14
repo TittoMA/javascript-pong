@@ -30,9 +30,9 @@
       </div> -->
 
       <div style="margin-top: 20px; margin-bottom: 20px">
-        <button class="button-19" id="btnStart1">1 Player</button>
+        <button class="button-19" id="btnStart1">Single Player</button>
         <button class="button-19" id="btnStart2">2 Player</button>
-        <button class="button-19" id="btnStartAI">AI vs. AI</button>
+        <button class="button-19" id="btnStartAI">BOT vs BOT</button>
 
         <button class="button-19 btn-red" id="btnStop" style="display: none">
           Stop
@@ -40,9 +40,9 @@
       </div>
 
       <div style="margin-bottom: 20px">
-        <h3 style="text-align: center">Game Settings</h3>
+        <h2 style="text-align: center">Game Settings</h2>
 
-        <div>
+        <div style="margin-bottom: 20px">
           <p>Left paddle speed:</p>
           <div style="display: flex">
             <input
@@ -68,7 +68,7 @@
           </div>
         </div>
 
-        <div>
+        <div style="margin-bottom: 20px">
           <p>Right paddle speed:</p>
           <div style="display: flex">
             <input
@@ -88,6 +88,32 @@
                 border-radius: 5px;
               "
               id="txtRightSpeed"
+            >
+              2
+            </h3>
+          </div>
+        </div>
+
+        <div>
+          <p>Ball serve speed:</p>
+          <div style="display: flex">
+            <input
+              style="flex: 1"
+              id="inputBallSpeed"
+              type="range"
+              min="1"
+              max="4"
+              value="1"
+            />
+            <h3
+              style="
+                margin: 0;
+                margin-left: 15px;
+                border: 2px solid white;
+                padding: 5px 10px;
+                border-radius: 5px;
+              "
+              id="txtBallSpeed"
             >
               2
             </h3>
@@ -139,6 +165,7 @@
         let btnStop = document.getElementById("btnStop");
         let leftPaddleSpeed = document.getElementById("leftPaddleSpeed");
         let rightPaddleSpeed = document.getElementById("rightPaddleSpeed");
+        let inputBallSpeed = document.getElementById("inputBallSpeed");
 
         var pong = Game.start("game", Pong, {
           sound: sound.checked,
@@ -188,6 +215,14 @@
         });
         Game.addEvent(rightPaddleSpeed, "input", function () {
           pong.inputPaddleSpeed("right");
+        });
+
+        // Ball Speed
+        Game.addEvent(inputBallSpeed, "change", function () {
+          pong.inputBallSpeed();
+        });
+        Game.addEvent(inputBallSpeed, "input", function () {
+          pong.inputBallSpeed();
         });
       });
     </script>
