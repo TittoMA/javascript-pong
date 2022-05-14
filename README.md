@@ -8,7 +8,8 @@ Anggota kelompok:
 - Reo Wicaksono (200535626819)
 - Titto Mahogany Attaraqie (200535626830)
 
-Original game source [how it works](http://codeincomplete.com/posts/2011/5/14/javascript_pong/index.html)
+
+Original game source: https://github.com/jakesgordon/javascript-pong
 
 # NOTES
 
