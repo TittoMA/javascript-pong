@@ -247,18 +247,32 @@ Pong = {
     this.showStartButton();
   },
 
-  changeAccel: function () {
-    let sliderAccel = document.getElementById("sliderAccel");
-    let txtAccel = document.getElementById("txtAccel");
+  inputPaddleSpeed: function (paddleSide) {
+    if (paddleSide == "left") {
+      let leftPaddleSpeed = document.getElementById("leftPaddleSpeed").value;
+      let txtLeftSpeed = document.getElementById("txtLeftSpeed");
 
-    txtAccel.innerText = sliderAccel.value;
-    this.changePaddleSpeed(txtAccel.innerText);
+      txtLeftSpeed.innerText = leftPaddleSpeed;
+      this.changePaddleSpeed(leftPaddleSpeed, paddleSide);
+    } else if (paddleSide == "right") {
+      let rightPaddleSpeed = document.getElementById("rightPaddleSpeed").value;
+      let txtRightSpeed = document.getElementById("txtRightSpeed");
+
+      txtRightSpeed.innerText = rightPaddleSpeed;
+      this.changePaddleSpeed(rightPaddleSpeed, paddleSide);
+    }
   },
 
-  changePaddleSpeed: function (speed) {
-    this.cfg.paddleSpeed = parseInt(speed);
-    this.leftPaddle.speed =
-      (this.leftPaddle.maxY - this.leftPaddle.minY) / this.cfg.paddleSpeed;
+  changePaddleSpeed: function (speed, paddleSide) {
+    let pdSpeed = 4 / speed;
+
+    if (paddleSide == "left") {
+      this.leftPaddle.speed =
+        (this.leftPaddle.maxY - this.leftPaddle.minY) / pdSpeed;
+    } else if (paddleSide == "right") {
+      this.rightPaddle.speed =
+        (this.rightPaddle.maxY - this.rightPaddle.minY) / pdSpeed;
+    }
   },
 
   //=============================================================================

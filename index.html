@@ -29,7 +29,7 @@
         <p><b>Esc</b> can be used to abandon a game.</p>
       </div> -->
 
-      <div style="margin-top: 40px; margin-bottom: 20px">
+      <div style="margin-top: 20px; margin-bottom: 20px">
         <button class="button-19" id="btnStart1">1 Player</button>
         <button class="button-19" id="btnStart2">2 Player</button>
         <button class="button-19" id="btnStartAI">AI vs. AI</button>
@@ -40,10 +40,59 @@
       </div>
 
       <div style="margin-bottom: 20px">
-        <h3>Game Settings</h3>
-        <p>Ball acceleration:</p>
-        <input id="sliderAccel" type="range" min="1" max="4" value="2" />
-        <h3 id="txtAccel">2</h3>
+        <h3 style="text-align: center">Game Settings</h3>
+
+        <div>
+          <p>Left paddle speed:</p>
+          <div style="display: flex">
+            <input
+              style="flex: 1"
+              id="leftPaddleSpeed"
+              type="range"
+              min="1"
+              max="5"
+              value="2"
+            />
+            <h3
+              style="
+                margin: 0;
+                margin-left: 15px;
+                border: 2px solid white;
+                padding: 5px 10px;
+                border-radius: 5px;
+              "
+              id="txtLeftSpeed"
+            >
+              2
+            </h3>
+          </div>
+        </div>
+
+        <div>
+          <p>Right paddle speed:</p>
+          <div style="display: flex">
+            <input
+              style="flex: 1"
+              id="rightPaddleSpeed"
+              type="range"
+              min="1"
+              max="5"
+              value="2"
+            />
+            <h3
+              style="
+                margin: 0;
+                margin-left: 15px;
+                border: 2px solid white;
+                padding: 5px 10px;
+                border-radius: 5px;
+              "
+              id="txtRightSpeed"
+            >
+              2
+            </h3>
+          </div>
+        </div>
       </div>
 
       <div class="settings">
@@ -88,7 +137,8 @@
         let btnStart2 = document.getElementById("btnStart2");
         let btnStartAI = document.getElementById("btnStartAI");
         let btnStop = document.getElementById("btnStop");
-        let sliderAccel = document.getElementById("sliderAccel");
+        let leftPaddleSpeed = document.getElementById("leftPaddleSpeed");
+        let rightPaddleSpeed = document.getElementById("rightPaddleSpeed");
 
         var pong = Game.start("game", Pong, {
           sound: sound.checked,
@@ -109,6 +159,8 @@
         Game.addEvent(predictions, "change", function () {
           pong.showPredictions(predictions.checked);
         });
+
+        // Button start and stop
         Game.addEvent(btnStart1, "click", function () {
           pong.startOne();
         });
@@ -121,11 +173,21 @@
         Game.addEvent(btnStop, "click", function () {
           pong.stopBtn();
         });
-        Game.addEvent(sliderAccel, "change", function () {
-          pong.changeAccel();
+
+        // Left Paddle Speed
+        Game.addEvent(leftPaddleSpeed, "change", function () {
+          pong.inputPaddleSpeed("left");
         });
-        Game.addEvent(sliderAccel, "input", function () {
-          pong.changeAccel();
+        Game.addEvent(leftPaddleSpeed, "input", function () {
+          pong.inputPaddleSpeed("left");
+        });
+
+        // Right Paddle Speed
+        Game.addEvent(rightPaddleSpeed, "change", function () {
+          pong.inputPaddleSpeed("right");
+        });
+        Game.addEvent(rightPaddleSpeed, "input", function () {
+          pong.inputPaddleSpeed("right");
         });
       });
     </script>
